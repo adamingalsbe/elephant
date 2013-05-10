@@ -1,4 +1,25 @@
 Elephant::Application.routes.draw do
+
+  # Routes for the User resource:
+  # CREATE
+  get '/users/new', controller: 'users', action: 'new', as: 'new_user'
+  post '/users', controller: 'users', action: 'create'
+
+  # READ
+  get '/users', controller: 'users', action: 'index', as: 'users'
+  get '/users/:id', controller: 'users', action: 'show', as: 'user'
+
+  # UPDATE
+  get '/users/:id/edit', controller: 'users', action: 'edit', as: 'edit_user'
+  put '/users/:id', controller: 'users', action: 'update'
+
+  # DELETE
+  delete '/users/:id', controller: 'users', action: 'destroy'
+  #------------------------------
+
+  get '/', controller: 'users', action: 'index'
+  get '/users', controller: 'users', action: 'index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
