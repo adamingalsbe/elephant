@@ -17,7 +17,7 @@ Elephant::Application.routes.draw do
   delete '/users/:id', controller: 'users', action: 'destroy'
   #------------------------------
 
-  get '/', controller: 'users', action: 'index'
+  get '/', controller: 'users', action: 'home'
   get '/users', controller: 'users', action: 'index'
 
   # The priority is based upon order of creation:
