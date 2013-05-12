@@ -20,6 +20,10 @@ Elephant::Application.routes.draw do
   get '/', controller: 'users', action: 'home'
   get '/users', controller: 'users', action: 'index'
 
+
+  get "static_pages/home"
+  get "static_pages/help"
+  get "static_pages/about"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
