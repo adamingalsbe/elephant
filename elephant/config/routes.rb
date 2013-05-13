@@ -17,13 +17,14 @@ Elephant::Application.routes.draw do
   delete '/users/:id', controller: 'users', action: 'destroy'
   #------------------------------
 
-  get '/', controller: 'users', action: 'home'
+  get '/', controller: 'static_pages', action: 'home'
   get '/users', controller: 'users', action: 'index'
 
 
   get "static_pages/home"
   get "static_pages/help"
   get "static_pages/about"
+  get "static_pages/contact"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
