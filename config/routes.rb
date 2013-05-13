@@ -1,6 +1,7 @@
 Elephant::Application.routes.draw do
 
 root to: 'static_pages#home'
+get '/users/new'
 
 match '/help',    to: 'static_pages#help'
 match '/about',   to: 'static_pages#about'
@@ -9,7 +10,7 @@ match '/signup', to: 'users#new'
 
   # Routes for the User resource:
   # CREATE
-  get '/users/new', controller: 'users', action: 'new', as: 'new_user'
+
   post '/users', controller: 'users', action: 'create'
 
   # READ
