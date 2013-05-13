@@ -1,5 +1,12 @@
 Elephant::Application.routes.draw do
 
+root to: 'static_pages#home'
+
+match '/help',    to: 'static_pages#help'
+match '/about',   to: 'static_pages#about'
+match '/contact', to: 'static_pages#contact'
+match '/signup', to: 'users#new'
+
   # Routes for the User resource:
   # CREATE
   get '/users/new', controller: 'users', action: 'new', as: 'new_user'
@@ -21,10 +28,6 @@ Elephant::Application.routes.draw do
   get '/users', controller: 'users', action: 'index'
 
 
-  get "static_pages/home"
-  get "static_pages/help"
-  get "static_pages/about"
-  get "static_pages/contact"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
