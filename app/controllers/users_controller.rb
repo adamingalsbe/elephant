@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @user.email_address = params[:email_address]
 
     if @user.save
-      redirect_to users_url
+      redirect_to user_url
     else
       render 'new'
     end
