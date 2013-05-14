@@ -2,24 +2,28 @@
 
 <%= form_tag(users_url, method: 'post') do %>
 
+  <div class="row">
+    <div class="span6 offset3">
 
-  <div>
     <%= label_tag :first_name %><br />
     <%= text_field_tag :first_name %>
-  </div>
 
-  <div>
+
     <%= label_tag :last_name %><br />
     <%= text_field_tag :last_name %>
-  </div>
 
-  <div>
+
     <%= label_tag :email_address %><br />
     <%= text_field_tag :email_address %>
-  </div>
 
+    <%= label_tag :password %><br />
+    <%= password_field_tag :password %>
 
-  <div>
-    <%= submit_tag "Create User" %>
+    <%= label_tag :password_confirmation, "Confirm password" %><br />
+    <%= password_field_tag :password_confirmation %>
+
+    <p>
+    <%= submit_tag "Create my account", class: "btn btn-large btn-primary" %>
+    <% end %>
   </div>
-<% end %>
+</div>

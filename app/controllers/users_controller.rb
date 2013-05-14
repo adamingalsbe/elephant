@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @user.first_name = params[:first_name]
     @user.last_name = params[:last_name]
     @user.email_address = params[:email_address]
-    
+
     if @user.save
       redirect_to users_url
     else
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     @user.first_name = params[:first_name]
     @user.last_name = params[:last_name]
     @user.email_address = params[:email_address]
-    
+
     if @user.save
       redirect_to users_url
     else
