@@ -7,11 +7,10 @@ root to: 'static_pages#home'
 match '/help',    to: 'static_pages#help'
 match '/about',   to: 'static_pages#about'
 match '/contact', to: 'static_pages#contact'
-match '/signup', to: 'users#new'
 
   # Routes for the User resource:
   # CREATE
-
+  get '/users/new', controller: 'users', action: 'new', as: 'new_user'
   post '/users', controller: 'users', action: 'create'
 
   # READ
@@ -27,7 +26,6 @@ match '/signup', to: 'users#new'
   #------------------------------
 
   get '/', controller: 'static_pages', action: 'home'
-  get '/users', controller: 'users', action: 'index'
 
 
   # The priority is based upon order of creation:
