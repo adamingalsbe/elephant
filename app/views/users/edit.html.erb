@@ -1,4 +1,4 @@
-<h1>Editing User #<%= @user.id %></h1>
+<h1>Editing User #<%= User.find_by_id(session["user_id"]).email_address %></h1>
 
 
 <%= form_tag(user_url(@user), method: 'put') do %>
@@ -18,7 +18,7 @@
     <%= text_field_tag :email_address, @user.email_address %>
   </div>
 
-  
+
   <div>
     <%= submit_tag "Update User" %>
   </div>

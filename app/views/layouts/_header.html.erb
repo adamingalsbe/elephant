@@ -4,9 +4,15 @@
       <%= link_to "elephant", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "Home", root_path %> </li>
-          <li><%= link_to "Help", help_path %> </li>
-          <li><%= link_to "Sign in", '#' %> </li>
+          <% if session["user_id"].present? %>
+          <li> Hello, <%= User.find_by_id(session["user_id"]).first_name %>!</li>
+          <li> <%= link_to "Sign out", "/logout" %></li>
+          <li> <%= link_to "My Account", "/users/#{session["user_id"]}" %></li>
+            <% else %>
+            <li><%= link_to "Sign up", '/users/new' %> </li>
+            <li><%= link_to "Sign in", '/login' %> </li>
+            <% end %>
+            <li><%= link_to "Help", help_path %> </li>
         </ul>
       </nav>
     </div>
