@@ -4,9 +4,13 @@ resources :users
 
 root to: 'static_pages#home'
 
-match '/help',    to: 'static_pages#help'
-match '/about',   to: 'static_pages#about'
-match '/contact', to: 'static_pages#contact'
+get '/help', controller: 'static_pages', action: 'help'
+get '/about', controller: 'static_pages', action: 'about'
+get '/contact', controller: 'static_pages', action: 'contact'
+
+get '/login', controller: 'sessions', action: 'new'
+post '/sessions', controller: 'sessions', action: 'create'
+get '/logout', controller: 'sessions', action: 'destroy'
 
   # Routes for the User resource:
   # CREATE

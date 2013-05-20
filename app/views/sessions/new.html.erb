@@ -1,0 +1,21 @@
+<h1> Log In </h1>
+
+<%= form_tag("/sessions", method: 'post') do %>
+
+  <div class="row">
+    <div class="span6 offset3">
+
+      <%= label_tag :email_address %><br />
+      <%= text_field_tag :email_address%>
+
+      <%= label_tag :password %><br />
+      <%= password_field_tag :password%>
+
+      <%= submit_tag "Log In", class: "btn btn-large btn-primary" %>
+      <p></p>
+
+      <p> New user? <%= link_to " Sign up now!", new_user_url %></p>
+
+    </div>
+  </div>
+<% end %>
