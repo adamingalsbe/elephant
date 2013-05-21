@@ -10,11 +10,11 @@ class SessionsController < ApplicationController
       redirect_to user, notice: "Welcome back, #{user.first_name}"
       else
       redirect_to "/login", notice: "Invalid email address or password."
+    end
   end
 
   def destroy
-    session["user_id'"] = nil
+    session["user_id"] = nil
     redirect_to "/", notice: "Come back soon!"
   end
-end
 end

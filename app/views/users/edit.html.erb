@@ -1,26 +1,28 @@
-<h1>Editing User #<%= User.find_by_id(session["user_id"]).email_address %></h1>
+<h1>Update your profile, <%= User.find_by_id(session["user_id"]).first_name.capitalize %></h1>
 
+<div class ="row">
+  <div class="span6 offset3">
 
-<%= form_tag(user_url(@user), method: 'put') do %>
+    <%= form_tag(user_url(@user), method: 'put') do %>
+      <%= render 'shared/error_messages' %>
 
-  <div>
-    <%= label_tag :first_name %><br />
-    <%= text_field_tag :first_name, @user.first_name %>
+      <%= label_tag :first_name %><br />
+      <%= text_field_tag :first_name, @user.first_name %>
+
+      <%= label_tag :last_name %><br />
+      <%= text_field_tag :last_name, @user.last_name %>
+
+      <%= label_tag :email_address %><br />
+      <%= text_field_tag :email_address, @user.email_address %>
+
+      <%= label_tag :password %><br />
+      <%= password_field_tag :password %>
+
+      <%= label_tag :password_confirmation, "Confirm password" %><br />
+      <%= password_field_tag :password_confirmation %>
+
+      <%= submit_tag "Save Changes", class: "brn btn-large btn-primary" %>
+     <% end %>
   </div>
+</div>
 
-  <div>
-    <%= label_tag :last_name %><br />
-    <%= text_field_tag :last_name, @user.last_name %>
-  </div>
-
-  <div>
-    <%= label_tag :email_address %><br />
-    <%= text_field_tag :email_address, @user.email_address %>
-  </div>
-
-
-  <div>
-    <%= submit_tag "Update User" %>
-  </div>
-
-<% end %>
