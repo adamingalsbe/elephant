@@ -8,6 +8,7 @@ before_filter :signed_in_user, only: [:edit, :update]
 
   def show
     @user = User.find_by_id(params[:id])
+    @banks = @user.banks
   end
 
   def new

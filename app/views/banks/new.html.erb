@@ -1,0 +1,19 @@
+<h1> Add a new Bank </h1>
+
+<%= form_tag("/banks", method: 'post') do %>
+
+  <div class="row">
+    <div class="span6 offset3">
+    <%= render 'shared/error_messages' %>
+
+    <%= label_tag :name %><br />
+    <%= text_field_tag :name %>
+
+
+    <%= label_tag :notes %><br />
+    <%= text_field_tag :notes %>
+
+    <%= submit_tag "Add this bank", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

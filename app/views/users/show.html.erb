@@ -1,5 +1,5 @@
 <h1><%= User.find_by_id(session["user_id"]).first_name %>'s account</h1>
-
+<div class="row">
 <p>
   <b>First name:</b>
   <%= @user.first_name %>
@@ -20,4 +20,15 @@
   <%= @user.id %>
 </p>
 
-<%= link_to 'Edit', edit_user_url(@user) %>
+<%= link_to 'Edit user profile', edit_user_url(@user), class: "btn btn-small" %>
+
+<div class="span8">
+    <%if @user.banks.any? %>
+    <h3> Banks </h3>
+    <ol class="banks">
+        <%= render @banks %>
+      </ol>
+      <%= will_paginate @banks %>
+      <% end %>
+    </div>
+</div>
