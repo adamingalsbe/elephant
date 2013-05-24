@@ -15,20 +15,23 @@
   <%= @user.email_address %>
 </p>
 
-<p>
-  <b>ID:</b>
-  <%= @user.id %>
-</p>
+
 
 <%= link_to 'Edit user profile', edit_user_url(@user), class: "btn btn-small" %>
+
+<%= link_to 'Add a bank', new_bank_url(@user), class: "btn btn-small" %>
 
 <div class="span8">
     <%if @user.banks.any? %>
     <h3> Banks </h3>
     <ol class="banks">
-        <%= render @banks %>
+        <% User.find_by_id(session["user_id"]).banks.each do |bank| %>
+           <tr>
+      <td><h2><%= bank.name %></h2></td>
+      <td><%= bank.notes %></td>
+           </tr>
       </ol>
-      <%= will_paginate @banks %>
+      <% end %>
       <% end %>
     </div>
-</div>
+

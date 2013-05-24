@@ -1,5 +1,14 @@
 Elephant::Application.routes.draw do
 
+  get '/banks/new', controller: 'banks', action: 'new', as: 'new_bank'
+  post '/banks', controller: 'banks', action: 'create'
+  get '/banks', controller: 'banks', action: 'index', as: 'banks'
+  get '/banks/:id', controller: 'banks', action: 'show', as: 'bank'
+  get '/banks/:id/edit', controller: 'banks', action: 'edit', as: 'edit_bank'
+  put '/banks/:id', controller: 'banks', action: 'update'
+  delete '/banks/:id', controller: 'banks', action: 'destroy'
+  #------------------------------
+
 resources :users
 
 root to: 'static_pages#home'

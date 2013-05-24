@@ -10,11 +10,13 @@
   <body>
     <%= render 'layouts/header' %>
 
+<div class="notice"><%= notice %></div>
+
     <div class="container">
-
     <%= yield %>
-    <%= render 'layouts/footer' %>
+    <!--<!<%= render 'layouts/footer' %> need to figure out float-->
     </div>
+     </body>
 
-  </body>
+
 </html>

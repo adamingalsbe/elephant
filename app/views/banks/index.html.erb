@@ -1,0 +1,32 @@
+<h1>Banks</h1>
+
+<p><%= link_to 'Add a New Bank', new_bank_url %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Notes</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @banks.each do |bank| %>
+    <tr>
+      <td><%= bank.name %></td>
+      <td><%= bank.notes %></td>
+      <td><%= bank.user_id %></td>
+  
+      <td><%= link_to 'Show', bank_url(bank) %></td>
+      <td><%= link_to 'Edit', edit_bank_url(bank) %></td>
+      <td><%= link_to 'Destroy', bank_url(bank), method: 'delete', data: { confirm: "Do you really want to delete this bank?" } %></td>
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+

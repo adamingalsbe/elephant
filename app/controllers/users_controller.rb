@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
-before_filter :signed_in_user, only: [:edit, :update]
-# before_filter :correct_user, only: [:edit, :update]
+before_filter :signed_in_user
+before_filter :correct_user, only: [:edit, :update, :show]
+before_filter :admin, only: [:index, :destroy]
 
   def index
-    @users = User.all
+      @users = User.all
   end
 
   def show
@@ -41,10 +42,12 @@ before_filter :signed_in_user, only: [:edit, :update]
     @user.email_address = params[:email_address]
     @user.password = params[:password]
     @user.password_confirmation = params[:password_confirmation]
+    @user.admin = params[:admin]
+
 
     if @user.save
       flash[:success] = "Profile updated"
-      redirect_to users_url
+      redirect_to user_url
     else
       render 'edit'
     end
@@ -57,11 +60,20 @@ before_filter :signed_in_user, only: [:edit, :update]
   end
 
   def signed_in_user
-      redirect_to login_url, notice: "Please sign in." unless session["user_id"].present?
+      unless session["user_id"].present?
+        # store_location
+        redirect_to login_url, notice: "Please sign in."
   end
 
-  # def correct_user
-  #   @user = User.find(params[:id])
-  #   redirect_to(root_path) unless session["user_id"](@user)
-  # end
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_path) unless current_user?(@user)
+  end
+  end
+
+  def admin
+    if User.find_by_id(session["user_id"]).admin.nil?
+      redirect_to(root_path)
+    end
+  end
 end
