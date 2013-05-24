@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-before_filter :signed_in_user
+before_filter :signed_in_user, except: [:new, :create]
 before_filter :correct_user, only: [:edit, :update, :show]
 before_filter :admin, only: [:index, :destroy]
 
@@ -25,6 +25,7 @@ before_filter :admin, only: [:index, :destroy]
     @user.password_confirmation = params[:password_confirmation]
 
     if @user.save
+      session["user_id"] = @user.id
       redirect_to @user
     else
       render 'new'
