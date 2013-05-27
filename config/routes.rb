@@ -1,5 +1,8 @@
 Elephant::Application.routes.draw do
 
+  resources :bills
+
+
   get '/banks/new', controller: 'banks', action: 'new', as: 'new_bank'
   post '/banks', controller: 'banks', action: 'create'
   get '/banks', controller: 'banks', action: 'index', as: 'banks'

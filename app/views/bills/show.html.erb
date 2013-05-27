@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @bill.name %>
+</p>
+
+<p>
+  <b>Autopay:</b>
+  <%= @bill.autopay %>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%= @bill.notes %>
+</p>
+
+
+<%= link_to 'Edit', edit_bill_path(@bill) %> |
+<%= link_to 'Back', bills_path %>

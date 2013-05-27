@@ -1,4 +1,4 @@
-<h1>Banks</h1>
+<h1><%= User.find_by_id(session["user_id"]).first_name.capitalize %>'s Banks</h1>
 
 <p><%= link_to 'Add a New Bank', new_bank_url %></p>
 
@@ -15,12 +15,12 @@
   </thead>
 
   <tbody>
-  <% @banks.each do |bank| %>
+  <% @user.banks.each do |bank| %>
     <tr>
       <td><%= bank.name %></td>
       <td><%= bank.notes %></td>
       <td><%= bank.user_id %></td>
-  
+
       <td><%= link_to 'Show', bank_url(bank) %></td>
       <td><%= link_to 'Edit', edit_bank_url(bank) %></td>
       <td><%= link_to 'Destroy', bank_url(bank), method: 'delete', data: { confirm: "Do you really want to delete this bank?" } %></td>

@@ -39,7 +39,7 @@ before_filter :admin, only: [:index]
     @bank.user_id = params[:user_id]
 
     if @bank.save
-      redirect_to user_url
+      redirect_to "/users/#{session["user_id"]}"
     else
       render 'new'
     end

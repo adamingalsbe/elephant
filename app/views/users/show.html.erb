@@ -1,4 +1,4 @@
-<h1><%= User.find_by_id(session["user_id"]).first_name %>'s account</h1>
+<h1><%= User.find_by_id(session["user_id"]).first_name.capitalize %>'s Plan</h1>
 <div class="row">
 <p>
   <b>First name:</b>

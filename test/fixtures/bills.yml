@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  autopay: false
+  notes: MyText
+
+two:
+  name: MyString
+  autopay: false
+  notes: MyText
