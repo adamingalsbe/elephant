@@ -1,7 +1,7 @@
 class BanksController < ApplicationController
 before_filter :signed_in_user
 before_filter :correct_user, only: [:edit, :show, :update, :destroy]
-before_filter :admin, only: [:index]
+# before_filter :admin, only: [:index]
 
   def index
     @banks = Bank.all
