@@ -72,9 +72,9 @@ before_filter :admin, only: [:index, :destroy]
   end
   end
 
-  # def admin
-  #   if User.find_by_id(session["user_id"]).admin.nil?
-  #     redirect_to(root_path)
-  #   end
-  # end
+  def admin
+    if User.find_by_id(session["user_id"]).admin.nil?
+      redirect_to(root_path)
+    end
+  end
 end
