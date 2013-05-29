@@ -21,6 +21,8 @@
 
 <%= link_to 'Add a bank', new_bank_url(@user), class: "btn btn-small" %>
 
+<%= link_to 'My Banks', banks_url, class: "btn btn-small" %>
+
 <div class="span8">
     <%if @user.banks.any? %>
     <h3> Banks </h3>

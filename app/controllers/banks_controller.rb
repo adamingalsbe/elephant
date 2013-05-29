@@ -4,7 +4,7 @@ before_filter :correct_user, only: [:edit, :show, :update, :destroy]
 # before_filter :admin, only: [:index]
 
   def index
-    @banks = Bank.all
+    @banks = Bank.find_by_user_id(session["user_id"])
   end
 
   def show
@@ -36,7 +36,7 @@ before_filter :correct_user, only: [:edit, :show, :update, :destroy]
     @bank = Bank.find_by_id(params[:id])
     @bank.name = params[:name]
     @bank.notes = params[:notes]
-    @bank.user_id = params[:user_id]
+    
 
     if @bank.save
       redirect_to "/users/#{session["user_id"]}"

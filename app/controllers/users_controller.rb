@@ -26,7 +26,7 @@ before_filter :admin, only: [:index, :destroy]
 
     if @user.save
       session["user_id"] = @user.id
-      redirect_to user_path
+      redirect_to @user
     else
       render 'new'
     end
@@ -72,9 +72,9 @@ before_filter :admin, only: [:index, :destroy]
   end
   end
 
-  # def admin
-  #   if User.find_by_id(session["user_id"]).admin.nil?
-  #     redirect_to(root_path)
-  #   end
-  # end
+  def admin
+    if User.find_by_id(session["user_id"]).admin.nil?
+      redirect_to(root_path)
+    end
+  end
 end

@@ -7,7 +7,6 @@
     <tr>
       <th>Name</th>
       <th>Notes</th>
-      <th>User</th>
       <th></th>
       <th></th>
       <th></th>
@@ -15,11 +14,12 @@
   </thead>
 
   <tbody>
-  <% @user.banks.each do |bank| %>
+  <% User.find_by_id(session["user_id"]).banks.each do |bank| %>
     <tr>
       <td><%= bank.name %></td>
       <td><%= bank.notes %></td>
-      <td><%= bank.user_id %></td>
+      
+
 
       <td><%= link_to 'Show', bank_url(bank) %></td>
       <td><%= link_to 'Edit', edit_bank_url(bank) %></td>
