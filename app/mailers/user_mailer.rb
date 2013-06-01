@@ -3,7 +3,7 @@ class UserMailer < ActionMailer::Base
 
   def welcome_email(user)
     @user = user
-    @url = "http://incapacitationplan.com/login"
+    @url = "https://radiant-savannah-1679.herokuapp.com/login"
     mail(:to => user.email_address, :subject => "Welcome to IncapacitationPlan.com")
   end
 end
