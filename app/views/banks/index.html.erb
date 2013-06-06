@@ -1,4 +1,4 @@
-<h1><%= User.find_by_id(session["user_id"]).first_name.capitalize %>'s Banks</h1>
+<h1><%= @user.first_name.capitalize %>'s Banks</h1>
 
 <p><%= link_to 'Add a New Bank', new_bank_url %></p>
 
@@ -14,10 +14,13 @@
   </thead>
 
   <tbody>
-  <% User.find_by_id(session["user_id"]).banks.each do |bank| %>
+  <% @banks.each do |bank| %>
     <tr>
       <td><%= bank.name %></td>
       <td><%= bank.notes %></td>
+      <td><% if @user.admin? %>
+          <%= bank.user_id %>
+          <%  end %> </td>
 
 
 
