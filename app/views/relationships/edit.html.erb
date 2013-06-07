@@ -4,18 +4,8 @@
 <%= form_tag(relationship_url(@relationship), method: 'put') do %>
 
   <div>
-    <%= label_tag :custodian1_email_address %><br />
-    <%= text_field_tag :custodian1_email_address, @email1 %>
-  </div>
-
-  <div>
-    <%= label_tag :custodian2_email_address %><br />
-    <%= text_field_tag :custodian2_email_address, @email2 %>
-  </div>
-
-  <div>
-    <%= label_tag :custodian3_email_address %><br />
-    <%= text_field_tag :custodian3_email_address, @email3 %>
+    <%= label_tag :custodian_email_address %><br />
+    <%= text_field_tag :custodian_email_address, @email1 %>
   </div>
 
   <div>
