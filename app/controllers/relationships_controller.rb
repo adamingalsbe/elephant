@@ -2,11 +2,12 @@ class RelationshipsController < ApplicationController
 
   def index
         @user = User.find_by_id(session["user_id"])
-    if User.find_by_id(session["user_id"]).admin?
-    @relationships = Relationship.all
-    else
-      @banks = Bank.find_all_by_user_id(session["user_id"])
-    end
+    # if User.find_by_id(session["user_id"]).admin?
+    # @relationships = Relationship.all
+    # else
+      @relationships = Relationship.find_all_by_principal_id(session["user_id"])
+      # @custodians = User.find_by_id(@relationships.custodian_id)
+    # end
   end
 
   def show

@@ -26,8 +26,6 @@ Elephant::Application.routes.draw do
   delete '/banks/:id', controller: 'banks', action: 'destroy'
   #------------------------------
 
-resources :users
-
 root to: 'static_pages#home'
 
 get '/help', controller: 'static_pages', action: 'help'

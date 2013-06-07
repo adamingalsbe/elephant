@@ -21,5 +21,5 @@ data.each do |user_info|
   m.first_name = user_info[:first_name]
   m.last_name = user_info[:last_name]
   m.email_address = user_info[:email_address]
-  m.save
+  m.save(:validate => false)
 end

@@ -1,12 +1,11 @@
 <h1><%= @user.first_name.capitalize %>'s Helpers</h1>
 
-<p><%= link_to 'Add a New Relationship', new_relationship_url %></p>
+<p><%= link_to 'Add a New Helper', new_relationship_url %></p>
 
 <table>
   <thead>
     <tr>
-      <th>Principal</th>
-      <th>Custodian</th>
+      <th>Helper</th>
       <th></th>
       <th></th>
       <th></th>
@@ -14,10 +13,9 @@
   </thead>
 
   <tbody>
-  <% @relationships.each do |relationship| %>
+  <%= @relationships.each do |custodian| %>
     <tr>
-      <td><%= relationship.principal_id %></td>
-      <td><%= relationship.custodian_id %></td>
+      <td><%= custodian.email_address %></td>
 
       <td><%= link_to 'Show', relationship_url(relationship) %></td>
       <td><%= link_to 'Edit', edit_relationship_url(relationship) %></td>

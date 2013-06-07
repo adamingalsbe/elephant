@@ -69,7 +69,7 @@ before_filter :admin, only: [:index, :destroy]
   end
 
   def correct_user
-    @user = User.find(params[:id])
+    @user = User.find_by_id(session["user_id"])
     redirect_to(root_path) unless current_user?(@user)
   end
   end
