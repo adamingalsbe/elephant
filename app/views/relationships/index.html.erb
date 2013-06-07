@@ -1,0 +1,34 @@
+<h1>Relationships</h1>
+
+<p><%= link_to 'Add a New Relationship', new_relationship_url %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Principal</th>
+      <th>Custodian 1</th>
+      <th>Custodian 2</th>
+      <th>Custodian 3</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @relationships.each do |relationship| %>
+    <tr>
+      <td><%= relationship.principal_id %></td>
+      <td><%= relationship.custodian1_id %></td>
+      <td><%= relationship.custodian2_id %></td>
+      <td><%= relationship.custodian3_id %></td>
+
+      <td><%= link_to 'Show', relationship_url(relationship) %></td>
+      <td><%= link_to 'Edit', edit_relationship_url(relationship) %></td>
+      <td><%= link_to 'Destroy', relationship_url(relationship), method: 'delete', data: { confirm: "Do you really want to delete this relationship?" } %></td>
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+

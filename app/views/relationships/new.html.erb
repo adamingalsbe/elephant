@@ -1,0 +1,24 @@
+<h1>Designate your helpers</h1>
+<h5>These people will be able to view (but not edit) your information, starting immediately. </h5>
+
+
+<%= form_tag(relationships_url, method: 'post') do %>
+
+  <div>
+    <%= label_tag :custodian1_email_address %><br />
+    <%= text_field_tag :custodian1_email_address %>
+  </div>
+   <div>
+    <%= label_tag :custodian2_email_address %><br />
+    <%= text_field_tag :custodian2_email_address %>
+  </div>
+   <div>
+    <%= label_tag :custodian3_email_address %><br />
+    <%= text_field_tag :custodian3_email_address %>
+  </div>
+
+
+  <div>
+    <%= submit_tag "Designate Helpers" %>
+  </div>
+<% end %>

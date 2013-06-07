@@ -14,6 +14,14 @@ class User < ActiveRecord::Base
   has_secure_password
   attr_accessible :first_name, :last_name, :email_address, :password, :password_confirmation
   has_many :banks
+  has_one :principal_relationship, class_name: 'Relationship', foreign_key: 'principal_id'
+  has_many :custodian1_relationships, class_name: 'Relationship', foreign_key: 'custodian1_id'
+  has_many :custodian2_relationships, class_name: 'Relationship', foreign_key: 'custodian2_id'
+  has_many :custodian3_relationships, class_name: 'Relationship', foreign_key: 'custodian3_id'
+def relationships
+  Relationship.where("principal_id = #{self.id} OR custodian1_id = #{self.id}
+                      OR custodian2_id = #{self.id} OR custodian3_id = #{self.id}")
+end
 
   before_save { |user| user.email_address = email_address.downcase }
   validates :first_name, presence: true, length: {minimum: 2, maximum: 50}

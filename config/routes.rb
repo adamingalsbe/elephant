@@ -1,5 +1,22 @@
 Elephant::Application.routes.draw do
 
+  # Routes for the Relationship resource:
+  # CREATE
+  get '/relationships/new', controller: 'relationships', action: 'new', as: 'new_relationship'
+  post '/relationships', controller: 'relationships', action: 'create'
+
+  # READ
+  get '/relationships', controller: 'relationships', action: 'index', as: 'relationships'
+  get '/relationships/:id', controller: 'relationships', action: 'show', as: 'relationship'
+
+  # UPDATE
+  get '/relationships/:id/edit', controller: 'relationships', action: 'edit', as: 'edit_relationship'
+  put '/relationships/:id', controller: 'relationships', action: 'update'
+
+  # DELETE
+  delete '/relationships/:id', controller: 'relationships', action: 'destroy'
+  #------------------------------
+
   get '/banks/new', controller: 'banks', action: 'new', as: 'new_bank'
   post '/banks', controller: 'banks', action: 'create'
   get '/banks', controller: 'banks', action: 'index', as: 'banks'
