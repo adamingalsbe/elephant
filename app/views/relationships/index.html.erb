@@ -1,28 +1,56 @@
-<h1><%= @user.first_name.capitalize %>'s Helpers</h1>
+<h1><%= @user.first_name.capitalize %>'s Relationships</h1>
 
-<p><%= link_to 'Add a New Helper', new_relationship_url %></p>
+<p><%= link_to 'Add a New Helper', new_relationship_url, class: "btn btn-primary btn-small" %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Helper</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<h2>My Helpers</h2>
 
-  <tbody>
-  <%= @relationships.each do |custodian| %>
-    <tr>
-      <td><%= custodian.email_address %></td>
+<% if @principal_relationships.blank? %>
+        <h4> None so far. </h4>
+<% else %>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Email Address</th>
+        <th></th>
+      </tr>
+    </thead>
 
-      <td><%= link_to 'Show', relationship_url(relationship) %></td>
-      <td><%= link_to 'Edit', edit_relationship_url(relationship) %></td>
-      <td><%= link_to 'Destroy', relationship_url(relationship), method: 'delete', data: { confirm: "Do you really want to remove this person as a helper?" } %></td>
+    <tbody>
+      <% @principal_relationships.each do |relationship| %>
+        <tr>
+          <td><%= relationship.custodian.first_name.capitalize %></td>
+          <td><%= relationship.custodian.email_address %></td>
+          <td><%= link_to 'Edit', edit_relationship_url(relationship), class: "btn btn-mini" %> <%= link_to 'Remove', relationship_url(relationship), class: "btn btn-mini", method: 'delete', data: { confirm: "Do you really want to remove this person as a helper?" } %></td>
 
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 
+<h2>People I'm helping</h2>
+
+<% if @custodian_relationships.blank? %>
+  <h4> None so far. </h4>
+
+<% else %>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Email Address</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @custodian_relationships.each do |relationship| %>
+        <tr>
+          <td><%= relationship.principal.first_name.capitalize %></td>
+          <td><%= relationship.principal.email_address %></td>
+          <td><%= link_to 'View Info', relationship.principal, class: 'btn btn-small btn-success' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

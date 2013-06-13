@@ -5,7 +5,8 @@ class RelationshipsController < ApplicationController
     # if User.find_by_id(session["user_id"]).admin?
     # @relationships = Relationship.all
     # else
-      @relationships = Relationship.find_all_by_principal_id(session["user_id"])
+      @principal_relationships = Relationship.find_all_by_principal_id(session["user_id"])
+      @custodian_relationships = Relationship.find_all_by_custodian_id(session["user_id"])
       # @custodians = User.find_by_id(@relationships.custodian_id)
     # end
   end
@@ -41,7 +42,7 @@ class RelationshipsController < ApplicationController
   def edit
     @relationship = Relationship.find_by_id(params[:id])
     if User.find_by_id(@relationship.custodian_id).present?
-      @email1 = User.find_by_id(@relationship.custodian_id).email_address
+      @email = User.find_by_id(@relationship.custodian_id).email_address
     end
   end
 

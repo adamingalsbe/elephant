@@ -44,7 +44,7 @@ before_filter :admin, only: [:index, :destroy]
     @user.email_address = params[:email_address]
     @user.password = params[:password]
     @user.password_confirmation = params[:password_confirmation]
-      if @user.email_address = "incapacitationplan@gmail.com"
+      if @user.email_address == "incapacitationplan@gmail.com"
         @user.admin = true
       end
 

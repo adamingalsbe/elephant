@@ -1,4 +1,4 @@
-<h1><%= User.find_by_id(session["user_id"]).first_name.capitalize %>'s Plan</h1>
+<h1><%= @user.first_name.capitalize %>'s Plan</h1>
 <div class="row">
   <ul>
 <li>
@@ -17,14 +17,17 @@
 </li>
 </ul>
 
-
 <div style="float: right">
-<%= link_to 'Edit user profile', edit_user_url(@user), class: "btn btn-small" %>
+  <% if @user.id == session["user_id"] %>
+  <%= link_to 'Edit My Profile', edit_user_url(@user), class: "btn" %>
+    <%if @user.banks.any? %>
+    <%= link_to 'Manage My Banks', banks_url, class: "btn" %>
+    <% else %>
+    <%= link_to 'Add a bank', new_bank_url(@user), class: "btn" %>
+    <% end %>
 
-<%= link_to 'Add a bank', new_bank_url(@user), class: "btn btn-small" %>
-
-<%= link_to 'My Banks', banks_url, class: "btn btn-small" %>
-<%= link_to 'My Helpers', relationships_url, class: 'btn btn-small', style: "color: green;" -%>
+  <%= link_to 'Manage My Helpers', relationships_url, class: 'btn btn-success' %>
+  <% end %>
 </div>
 <div class="span8">
     <%if @user.banks.any? %>
@@ -37,14 +40,16 @@
         <th>&nbsp;</th>
       </thead>
       <tbody>
-        <% User.find_by_id(session["user_id"]).banks.each do |bank| %>
+        <% @user.banks.each do |bank| %>
           <tr>
             <td><%= bank.name %></td>
             <td><%= bank.notes %></td>
-            <td><%= link_to 'Show Bank', bank -%></td>
+            <td><% if @user.id == session["user_id"] %>
+              <%= link_to 'Show Bank', bank, class: 'btn btn-small' %>
+              <%end%></td>
           </tr>
-        <% end -%>
+        <% end %>
       </tbody>
     </div>
-    <% end -%>
+    <% end %>
 
