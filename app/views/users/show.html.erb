@@ -1,39 +1,50 @@
 <h1><%= User.find_by_id(session["user_id"]).first_name.capitalize %>'s Plan</h1>
 <div class="row">
-<p>
+  <ul>
+<li>
   <b>First name:</b>
   <%= @user.first_name %>
-</p>
+</li>
 
-<p>
+<li>
   <b>Last name:</b>
   <%= @user.last_name %>
-</p>
+</li>
 
-<p>
+<li>
   <b>Email address:</b>
   <%= @user.email_address %>
-</p>
+</li>
+</ul>
 
 
-
+<div style="float: right">
 <%= link_to 'Edit user profile', edit_user_url(@user), class: "btn btn-small" %>
 
 <%= link_to 'Add a bank', new_bank_url(@user), class: "btn btn-small" %>
 
 <%= link_to 'My Banks', banks_url, class: "btn btn-small" %>
-
+<%= link_to 'My Helpers', relationships_url, class: 'btn btn-small', style: "color: green;" -%>
+</div>
 <div class="span8">
     <%if @user.banks.any? %>
     <h3> Banks </h3>
-    <ol class="banks">
+
+    <table class="table">
+      <thead>
+        <th>Bank Name</th>
+        <th>Bank Notes</th>
+        <th>&nbsp;</th>
+      </thead>
+      <tbody>
         <% User.find_by_id(session["user_id"]).banks.each do |bank| %>
-           <tr>
-      <td><h2><%= bank.name %></h2></td>
-      <td><%= bank.notes %></td>
-           </tr>
-      </ol>
-      <% end %>
-      <% end %>
+          <tr>
+            <td><%= bank.name %></td>
+            <td><%= bank.notes %></td>
+            <td><%= link_to 'Show Bank', bank -%></td>
+          </tr>
+        <% end -%>
+      </tbody>
     </div>
+    <% end -%>
 
