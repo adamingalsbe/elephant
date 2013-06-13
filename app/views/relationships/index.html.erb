@@ -19,7 +19,7 @@
     <tbody>
       <% @principal_relationships.each do |relationship| %>
         <tr>
-          <td><%= relationship.custodian.first_name.capitalize %></td>
+          <td><%= relationship.custodian.first_name %></td>
           <td><%= relationship.custodian.email_address %></td>
           <td><%= link_to 'Edit', edit_relationship_url(relationship), class: "btn btn-mini" %> <%= link_to 'Remove', relationship_url(relationship), class: "btn btn-mini", method: 'delete', data: { confirm: "Do you really want to remove this person as a helper?" } %></td>
 
