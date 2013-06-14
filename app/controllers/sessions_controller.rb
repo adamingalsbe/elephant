@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_by_email_address(params[:email_address].downcase)
     if user && user.authenticate(params[:password])
       session["user_id"] = user.id
-      redirect_to user, notice: "Welcome back, #{user.first_name}"
+      redirect_back_or user
       else
       redirect_to "/login", notice: "Invalid email address or password."
     end

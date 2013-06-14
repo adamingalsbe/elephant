@@ -64,7 +64,7 @@ before_filter :admin, only: [:index, :destroy]
 
   def signed_in_user
       unless session["user_id"].present?
-        # store_location
+        store_location
         redirect_to login_url, notice: "Please sign in."
   end
 

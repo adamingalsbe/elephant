@@ -1,4 +1,6 @@
 class RelationshipsController < ApplicationController
+before_filter :signed_in_user
+before_filter :correct_user, only: [:edit, :show, :update, :destroy]
 
   def index
         @user = User.find_by_id(session["user_id"])
@@ -69,4 +71,17 @@ class RelationshipsController < ApplicationController
     @relationship.destroy
     redirect_to relationships_url
   end
+
+def signed_in_user
+    unless session["user_id"].present?
+      store_location
+      redirect_to login_url, notice: "Please sign in."
+end
+
+def correct_user
+  @user = User.find_by_id(session["user_id"])
+  redirect_to(root_path) unless current_user?(@user)
+end
+end
+
 end
