@@ -1,4 +1,4 @@
-<h1><%= @user.first_name.capitalize %>'s Relationships</h1>
+<h1><%= @user.first_name.capitalize unless @user.first_name.blank? %>'s Relationships</h1>
 
 <p><%= link_to 'Add a New Helper', new_relationship_url, class: "btn btn-primary btn-small" %></p>
 

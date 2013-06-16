@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 before_filter :signed_in_user, except: [:new, :create]
-before_filter :correct_user, only: [:edit, :update, :show]
+before_filter :correct_user, only: [:edit, :update]
+before_filter :helper, only: [:show]
 before_filter :admin, only: [:index, :destroy]
 
   def index
@@ -79,4 +80,15 @@ before_filter :admin, only: [:index, :destroy]
       redirect_to(root_path)
     end
   end
+
+  def helper
+    @r = Relationship.find_all_by_principal_id(params[:id])
+    @user = User.find_by_id(params[:id])
+    @viewer = User.find_by_id(session["user_id"])
+      if @viewer.admin.nil?
+        if @r.none? {|h| h[:custodian_id] == @viewer.id}
+          redirect_to(root_path) unless current_user?(@user)
+          end
+        end
+    end
 end

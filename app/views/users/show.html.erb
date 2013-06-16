@@ -1,4 +1,4 @@
-<h1><%= @user.first_name.capitalize %>'s Plan</h1>
+<h1><%= @user.first_name.capitalize unless @user.first_name.blank? %>'s Plan</h1>
 <div class="row">
   <ul>
 <li>
