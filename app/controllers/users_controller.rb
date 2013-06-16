@@ -28,7 +28,7 @@ before_filter :admin, only: [:index, :destroy]
 
     if @user.save
       session["user_id"] = @user.id
-      UserMailer.welcome_email(@user).deliver
+      UserMailer.verify_address_email(@user).deliver
       redirect_to @user
     else
       render 'new'

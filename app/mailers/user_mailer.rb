@@ -8,9 +8,9 @@ class UserMailer < ActionMailer::Base
     mail(:to => user.email_address, :subject => "Please confirm your email address")
   end
 
-  def welcome_email(user)
+  def verify_address_email(user)
     @user = user
-    @url = "https://incapacitationplan.herokuapp.com/login"
-    mail(:to => user.email_address, :subject => "Welcome to IncapacitationPlan.com")
+    @url = "https://incapacitationplan.herokuapp.com/users/#{@user.id}/edit?email_verification=#{@user.email_verification}"
+    mail(:to => user.email_address, :subject => "Please confirm your email address")
   end
 end

@@ -6,12 +6,10 @@
   <body>
     <h1> Welcome to IncapacitationPlan.com, <%= @user.first_name %></h1>
     <p>
-    You have successfully signed up to IncapacitationPlan.com, and
-    your email address (<%= @user.email_address %>) serves as your username.
-    </p>
-    <p>
-      To log in to the site, just follow this link: <%= @url %>.
-    </p>
+    You have successfully signed up to IncapacitationPlan.com. Please confirm that this email address is valid by following the below link: </p>
+
+    <h2><a href=<%= @url %>>Verify Email Address</a></h2>
+
     <p> Thanks for joining and have a great day!</p>
   </body>
 </html>
