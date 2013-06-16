@@ -24,6 +24,7 @@ before_filter :admin, only: [:index, :destroy]
     @user.email_address = params[:email_address]
     @user.password = params[:password]
     @user.password_confirmation = params[:password_confirmation]
+    @user.email_verification = (0...50).map{ ('a'..'z').to_a[rand(26)] }.join
 
     if @user.save
       session["user_id"] = @user.id
@@ -48,6 +49,9 @@ before_filter :admin, only: [:index, :destroy]
       if @user.email_address == "incapacitationplan@gmail.com"
         @user.admin = true
       end
+      if params[:email_verification] == @user.email_verification
+        @user.email_verified = true
+      end
 
     if @user.save
       flash[:success] = "Profile updated"
@@ -59,6 +63,9 @@ before_filter :admin, only: [:index, :destroy]
 
   def destroy
     @user = User.find_by_id(params[:id])
+      @user.relationships.each do |r|
+      r.destroy
+      end
     @user.destroy
     redirect_to users_url
   end

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1> Hello, <%= @user.first_name %></h1>
+    <p>
+    You have been designated as a custodian on IncapacitationPlan.com.
+    This means that <%= @principal.first_name %> (<%= @principal.email_address %>) trusts you to view practical information about his or her financial accounts in case you need to help manage them.
+    An account has been created for you on IncapacitationPlan.com, and
+    your email address (<%= @user.email_address %>) serves as your username.
+    </p>
+    <p>
+      To confirm that you are willing to help <%= @principal.first_name %> and that this email address is valid, please <a href=<%= @url %>>click here</a>.
+    </p>
+    <p> Thank you, and have a great day!</p>
+  </body>
+</html>

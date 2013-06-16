@@ -5,6 +5,10 @@
 <%= form_tag(relationships_url, method: 'post') do %>
 
   <div>
+    <%= label_tag :custodian_first_name %><br />
+    <%= text_field_tag :custodian_first_name %>
+  </div>
+   <div>
     <%= label_tag :custodian_email_address %><br />
     <%= text_field_tag :custodian_email_address %>
   </div>

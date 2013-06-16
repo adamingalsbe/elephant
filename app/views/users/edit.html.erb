@@ -15,6 +15,11 @@
       <%= label_tag :email_address %><br />
       <%= text_field_tag :email_address, @user.email_address %>
 
+      <% if @user.email_verified.nil? %>
+      <%= label_tag :email_verification %><br />
+      <%= text_field_tag :email_verification, params[:email_verification] %>
+      <% end %>
+
       <%= label_tag :password %><br />
       <%= password_field_tag :password %>
 

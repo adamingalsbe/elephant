@@ -31,7 +31,12 @@ before_filter :correct_user, only: [:edit, :show, :update, :destroy]
     else
       @user = User.new
       @user.email_address = params[:custodian_email_address]
+      @user.first_name = params[:custodian_first_name]
+      @user.email_verification = (0...50).map{ ('a'..'z').to_a[rand(26)] }.join
+      @user.referred_by = session["user_id"]
       @user.save(:validate => false)
+      UserMailer.helper_verify_address_email(@user).deliver
+      @relationship.custodian_id = @user.id
     end
 
     if @relationship.save
