@@ -5,7 +5,7 @@
       <nav>
         <ul class="nav pull-right">
           <% if session["user_id"].present? %>
-          <li> Hello, <%= User.find_by_id(session["user_id"]).first_name %>!</li>
+          <li><h4> Hello, <%= User.find_by_id(session["user_id"]).first_name %>!</h4></li>
           <li> <%= link_to "Sign out", "/logout" %></li>
           <li> <%= link_to "My Account", "/users/#{session["user_id"]}" %></li>
             <% else %>
