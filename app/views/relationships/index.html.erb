@@ -12,15 +12,25 @@
       <tr>
         <th>First Name</th>
         <th>Email Address</th>
-        <th></th>
+        <th>Email Address confirmed?</th>
       </tr>
     </thead>
 
     <tbody>
       <% @principal_relationships.each do |relationship| %>
-        <tr>
+          <% if relationship.custodian.email_verified %>
+        <tr class="success">
           <td><%= relationship.custodian.first_name %></td>
           <td><%= relationship.custodian.email_address %></td>
+          <td>Yes</td>
+          <% else %>
+          <tr class="error">
+          <td><%= relationship.custodian.first_name %></td>
+          <td><%= relationship.custodian.email_address %></td>
+          <td>No<td>
+          <% end %>
+
+          </td>
           <td><%= link_to 'Edit', edit_relationship_url(relationship), class: "btn btn-mini" %> <%= link_to 'Remove', relationship_url(relationship), class: "btn btn-mini", method: 'delete', data: { confirm: "Do you really want to remove this person as a helper?" } %></td>
 
         </tr>

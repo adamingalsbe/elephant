@@ -41,6 +41,9 @@ before_filter :admin, only: [:index, :destroy]
 
   def update
     @user = User.find_by_id(params[:id])
+    if params[:new_email_verification].present?
+        UserMailer.verify_address_email(@user).deliver
+    end
     @user.first_name = params[:first_name]
     @user.last_name = params[:last_name]
     @user.email_address = params[:email_address]

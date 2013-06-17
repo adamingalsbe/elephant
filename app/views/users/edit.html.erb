@@ -6,24 +6,27 @@
     <%= form_tag(user_url(@user), method: 'put') do %>
       <%= render 'shared/error_messages' %>
 
-      <%= label_tag :first_name %><br />
+      <%= label_tag :first_name %>
       <%= text_field_tag :first_name, @user.first_name %>
 
-      <%= label_tag :last_name %><br />
+      <%= label_tag :last_name %>
       <%= text_field_tag :last_name, @user.last_name %>
 
-      <%= label_tag :email_address %><br />
+      <%= label_tag :email_address %>
       <%= text_field_tag :email_address, @user.email_address %>
 
       <% if @user.email_verified.nil? %>
-      <%= label_tag :email_verification %><br />
+      <%= label_tag :email_confirmation_code %>
       <%= text_field_tag :email_verification, params[:email_verification] %>
+
+      <%= label_tag :resend_my_email_confirmation_code %>
+      <%= check_box_tag :new_email_verification %>
       <% end %>
 
-      <%= label_tag :password %><br />
+      <%= label_tag :password %>
       <%= password_field_tag :password %>
 
-      <%= label_tag :password_confirmation, "Confirm password" %><br />
+      <%= label_tag :password_confirmation, "Confirm password" %>
       <%= password_field_tag :password_confirmation %>
 
       <%= submit_tag "Save Changes", class: "brn btn-large btn-primary" %>
