@@ -44,17 +44,20 @@ before_filter :admin, only: [:index, :destroy]
     if params[:new_email_verification].present?
         UserMailer.verify_address_email(@user).deliver
     end
+    if @user.email_verification.nil?
+      @user.email_verification = (0...50).map{ ('a'..'z').to_a[rand(26)] }.join
+    end
     @user.first_name = params[:first_name]
     @user.last_name = params[:last_name]
     @user.email_address = params[:email_address]
     @user.password = params[:password]
     @user.password_confirmation = params[:password_confirmation]
-      if @user.email_address == "incapacitationplan@gmail.com"
-        @user.admin = true
-      end
-      if params[:email_verification] == @user.email_verification
-        @user.email_verified = true
-      end
+    if @user.email_address == "incapacitationplan@gmail.com"
+      @user.admin = true
+    end
+    if params[:email_verification] == @user.email_verification
+      @user.email_verified = true
+    end
 
     if @user.save
       session["user_id"] = @user.id
