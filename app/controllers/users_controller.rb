@@ -57,8 +57,9 @@ before_filter :admin, only: [:index, :destroy]
       end
 
     if @user.save
+      session["user_id"] = @user.id
       flash[:success] = "Profile updated"
-      redirect_to user_url
+      redirect_to @user
     else
       render 'edit'
     end
@@ -74,15 +75,21 @@ before_filter :admin, only: [:index, :destroy]
   end
 
   def signed_in_user
-      unless session["user_id"].present?
-        store_location
-        redirect_to login_url, notice: "Please sign in."
+    if session["user_id"].nil?
+     unless params[:email_verification] == User.find_by_id(params[:id]).email_verification
+      store_location
+      redirect_to login_url, notice: "Please sign in."
+    end
   end
 
   def correct_user
+    if session["user_id"].nil?
+      redirect_to(root_path) unless params[:email_verification] == User.find_by_id(params[:id]).email_verification
+    else
     @user = User.find_by_id(session["user_id"])
     redirect_to(root_path) unless current_user?(@user)
-  end
+    end
+    end
   end
 
   def admin
