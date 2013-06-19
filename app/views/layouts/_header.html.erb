@@ -7,7 +7,7 @@
           <% if session["user_id"].present? %>
           <li><h4> Hello, <%= User.find_by_id(session["user_id"]).first_name %>!</h4></li>
           <li> <%= link_to "Sign out", "/logout" %></li>
-          <li> <%= link_to "My Account", "/users/#{session["user_id"]}" %></li>
+          <li> <%= link_to "My Profile", "/users/#{session["user_id"]}" %></li>
             <% else %>
             <li><%= link_to "Sign up", '/users/new' %> </li>
             <li><%= link_to "Sign in", '/login' %> </li>

@@ -11,9 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130616225136) do
+ActiveRecord::Schema.define(:version => 20130619052250) do
 
-  create_table "banks", :force => true do |t|
+  create_table "accounts", :force => true do |t|
     t.string   "name"
     t.text     "notes"
     t.datetime "created_at", :null => false

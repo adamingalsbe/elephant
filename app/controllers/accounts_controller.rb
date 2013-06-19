@@ -1,4 +1,4 @@
-class BanksController < ApplicationController
+class AccountsController < ApplicationController
 before_filter :signed_in_user
 before_filter :correct_user, only: [:edit, :show, :update, :destroy]
 # before_filter :admin, only: [:index]
@@ -6,27 +6,27 @@ before_filter :correct_user, only: [:edit, :show, :update, :destroy]
   def index
     @user = User.find_by_id(session["user_id"])
     if User.find_by_id(session["user_id"]).admin?
-      @banks = Bank.all
+      @accounts = Account.all
     else
-      @banks = Bank.find_all_by_user_id(session["user_id"])
+      @accounts = Account.find_all_by_user_id(session["user_id"])
     end
   end
 
   def show
-    @bank = Bank.find_by_id(params[:id])
+    @account = Account.find_by_id(params[:id])
   end
 
   def new
-    @bank = Bank.new
+    @account = Account.new
   end
 
   def create
-    @bank = Bank.new
-    @bank.name = params[:name]
-    @bank.notes = params[:notes]
-    @bank.user_id = session["user_id"]
+    @account = Account.new
+    @account.name = params[:name]
+    @account.notes = params[:notes]
+    @account.user_id = session["user_id"]
 
-    if @bank.save
+    if @account.save
       redirect_to "/users/#{session["user_id"]}"
     else
       render 'new'
@@ -34,16 +34,16 @@ before_filter :correct_user, only: [:edit, :show, :update, :destroy]
   end
 
   def edit
-    @bank = Bank.find_by_id(params[:id])
+    @account = Account.find_by_id(params[:id])
   end
 
   def update
-    @bank = Bank.find_by_id(params[:id])
-    @bank.name = params[:name]
-    @bank.notes = params[:notes]
+    @account = Account.find_by_id(params[:id])
+    @account.name = params[:name]
+    @account.notes = params[:notes]
 
 
-    if @bank.save
+    if @account.save
       redirect_to "/users/#{session["user_id"]}"
     else
       render 'new'
@@ -51,9 +51,9 @@ before_filter :correct_user, only: [:edit, :show, :update, :destroy]
   end
 
   def destroy
-    @bank = Bank.find_by_id(params[:id])
-    @bank.destroy
-    redirect_to banks_url
+    @account = Account.find_by_id(params[:id])
+    @account.destroy
+    redirect_to accounts_url
   end
 
   def signed_in_user
@@ -61,8 +61,8 @@ before_filter :correct_user, only: [:edit, :show, :update, :destroy]
   end
 
   def correct_user
-    @bank = Bank.find_by_id(params[:id])
-    @user = User.find_by_id(@bank["user_id"])
+    @account = Account.find_by_id(params[:id])
+    @user = User.find_by_id(@account["user_id"])
     redirect_to(root_path) unless current_user?(@user)
   end
 

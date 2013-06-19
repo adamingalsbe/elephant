@@ -25,32 +25,32 @@
 <div style="float: right">
   <% if @user.id == session["user_id"] %>
   <%= link_to 'Edit My Profile', edit_user_url(@user), class: "btn" %>
-    <%if @user.banks.any? %>
-    <%= link_to 'Manage My Banks', banks_url, class: "btn" %>
+    <%if @user.accounts.any? %>
+    <%= link_to 'Manage My Accounts', accounts_url, class: "btn" %>
     <% else %>
-    <%= link_to 'Add a bank', new_bank_url(@user), class: "btn" %>
+    <%= link_to 'Add an account', new_account_url(@user), class: "btn" %>
     <% end %>
 
   <%= link_to 'Manage My Helpers', relationships_url, class: 'btn btn-success' %>
   <% end %>
 </div>
 <div class="span8">
-    <%if @user.banks.any? %>
-    <h3> Banks </h3>
+    <%if @user.accounts.any? %>
+    <h3> Accounts </h3>
 
     <table class="table">
       <thead>
-        <th>Bank Name</th>
-        <th>Bank Notes</th>
+        <th>Account Name</th>
+        <th>Account Notes</th>
         <th>&nbsp;</th>
       </thead>
       <tbody>
-        <% @user.banks.each do |bank| %>
+        <% @user.accounts.each do |account| %>
           <tr>
-            <td><%= bank.name %></td>
-            <td><%= bank.notes %></td>
+            <td><%= account.name %></td>
+            <td><%= account.notes %></td>
             <td><% if @user.id == session["user_id"] %>
-              <%= link_to 'Show Bank', bank, class: 'btn btn-small' %>
+              <%= link_to 'Show Account', account, class: 'btn btn-small' %>
               <%end%></td>
           </tr>
         <% end %>

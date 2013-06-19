@@ -13,7 +13,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   attr_accessible :first_name, :last_name, :email_address, :password, :password_confirmation
-  has_many :banks
+  has_many :accounts
   has_many :principal_relationships, class_name: 'Relationship', foreign_key: 'principal_id'
   has_many :custodian_relationships, class_name: 'Relationship', foreign_key: 'custodian_id'
 def relationships

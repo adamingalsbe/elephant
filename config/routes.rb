@@ -17,13 +17,13 @@ Elephant::Application.routes.draw do
   delete '/relationships/:id', controller: 'relationships', action: 'destroy'
   #------------------------------
 
-  get '/banks/new', controller: 'banks', action: 'new', as: 'new_bank'
-  post '/banks', controller: 'banks', action: 'create'
-  get '/banks', controller: 'banks', action: 'index', as: 'banks'
-  get '/banks/:id', controller: 'banks', action: 'show', as: 'bank'
-  get '/banks/:id/edit', controller: 'banks', action: 'edit', as: 'edit_bank'
-  put '/banks/:id', controller: 'banks', action: 'update'
-  delete '/banks/:id', controller: 'banks', action: 'destroy'
+  get '/accounts/new', controller: 'accounts', action: 'new', as: 'new_account'
+  post '/accounts', controller: 'accounts', action: 'create'
+  get '/accounts', controller: 'accounts', action: 'index', as: 'accounts'
+  get '/accounts/:id', controller: 'accounts', action: 'show', as: 'account'
+  get '/accounts/:id/edit', controller: 'accounts', action: 'edit', as: 'edit_account'
+  put '/accounts/:id', controller: 'accounts', action: 'update'
+  delete '/accounts/:id', controller: 'accounts', action: 'destroy'
   #------------------------------
 
 root to: 'static_pages#home'

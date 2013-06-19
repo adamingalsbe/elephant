@@ -10,7 +10,7 @@ before_filter :admin, only: [:index, :destroy]
 
   def show
     @user = User.find_by_id(params[:id])
-    @banks = @user.banks
+    @accounts = @user.accounts
   end
 
   def new

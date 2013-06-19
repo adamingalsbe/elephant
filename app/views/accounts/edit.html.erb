@@ -1,0 +1,19 @@
+<h1>Editing Account #<%= @account.id %></h1>
+
+<%= form_tag(account_url(@account), method: 'put') do %>
+
+  <div>
+    <%= label_tag :name %><br />
+    <%= text_field_tag :name, @account.name %>
+  </div>
+
+  <div>
+    <%= label_tag :notes %><br />
+    <%= text_area_tag :notes, @account.notes %>
+  </div>
+
+  <div>
+    <%= submit_tag "Update Account" %>
+  </div>
+
+<% end %>

@@ -1,0 +1,32 @@
+<h1><%= @user.first_name.capitalize %>'s Accounts</h1>
+
+<p><%= link_to 'Add a New Account', new_account_url, class: "btn btn-primary btn-small" %></p>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Notes</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @accounts.each do |account| %>
+    <tr>
+      <td><%= account.name %></td>
+      <td><%= account.notes %></td>
+      <td><% if @user.admin? %>
+          <%= account.user_id %>
+          <%  end %> </td>
+
+      <td><%= link_to 'Show', account_url(account), class: "btn btn-mini" %>
+          <%= link_to 'Edit', edit_account_url(account), class: "btn btn-mini" %>
+          <%= link_to 'Destroy', account_url(account), class: "btn btn-mini", method: 'delete', data: { confirm: "Do you really want to delete this account?" } %></td>
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>
