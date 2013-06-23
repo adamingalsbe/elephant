@@ -6,12 +6,12 @@
 
   <div>
     <%= label_tag :name %><br />
-    <%= text_field_tag :name %>
+    <%= text_field_tag :name, nil, placeholder: "Enter account name..." %>
   </div>
 
   <div>
     <%= label_tag :notes %><br />
-    <%= text_area_tag :notes %>
+    <%= text_area_tag :notes, nil, placeholder: "Enter notes about your account. For example, what bills are paid out of this account? Do you receive those bills in the mail, or through e-billing? Is this account jointly owned with anyone else?" %>
   </div>
 
    <div>
